@@ -1,0 +1,100 @@
+{
+    "ransomware_historian": {
+        "title": "Ransomware in Historian Server",
+        "keywords": [
+            "ransomware",
+            "historian"
+        ],
+        "impact_zone": "Level 3 \u2013 Operations / Data Aggregation",
+        "purdue_level": "L3",
+        "detection": [
+            "Monitor abnormal file access and encryption activity.",
+            "Check historian data availability and integrity.",
+            "Correlate logs from backup servers for anomalies."
+        ],
+        "containment": [
+            "Isolate historian server from network immediately.",
+            "Block all SMB and RDP connections to the affected host.",
+            "Coordinate with IT to disable external shares."
+        ],
+        "roles": {
+            "SOC Analyst": "Identify and confirm ransomware indicators.",
+            "OT Engineer": "Disconnect server from control network.",
+            "Plant Manager": "Authorize controlled production halt if required."
+        },
+        "communication": [
+            "Notify cybersecurity incident team.",
+            "Inform management and regulatory if data is affected."
+        ],
+        "recovery": [
+            "Restore historian data from validated backup.",
+            "Patch vulnerabilities before reconnecting to OT network."
+        ],
+        "post_incident": [
+            "Review and update backup policies.",
+            "Conduct lessons learned and tabletop exercise."
+        ],
+        "frameworks": "NIST CSF DE.CM, IEC 62443-2-1 IR Procedures"
+    },
+    "plc_firmware_tampering": {
+        "title": "PLC Firmware Tampering",
+        "keywords": [
+            "plc",
+            "firmware",
+            "tampering"
+        ],
+        "impact_zone": "Level 1 \u2013 Controllers",
+        "purdue_level": "L1",
+        "detection": [
+            "Review PLC firmware checksums and audit logs.",
+            "Verify firmware version mismatches against baseline."
+        ],
+        "containment": [
+            "Isolate PLC from engineering network.",
+            "Disable firmware upload/download permissions."
+        ],
+        "roles": {
+            "OT Engineer": "Validate controller integrity and firmware signatures.",
+            "SOC Analyst": "Correlate any unauthorized changes from logs.",
+            "Maintenance Lead": "Coordinate safe shutdown if required."
+        },
+        "communication": [
+            "Notify plant cybersecurity lead.",
+            "Escalate to vendor if malicious firmware confirmed."
+        ],
+        "recovery": [
+            "Re-flash PLC with validated firmware image.",
+            "Recommission and test control loop safely."
+        ],
+        "post_incident": [
+            "Enhance firmware management policy.",
+            "Deploy code-signing enforcement for PLC updates."
+        ],
+        "frameworks": "IEC 62443-2-1, SANS ICS IR Phase 3"
+    },
+    "generic": {
+        "title": "Generic OT Incident Response",
+        "keywords": [],
+        "impact_zone": "Variable",
+        "purdue_level": "Unknown",
+        "detection": [
+            "Collect incident details and verify alarm sources."
+        ],
+        "containment": [
+            "Isolate affected systems to prevent propagation."
+        ],
+        "roles": {
+            "Incident Lead": "Coordinate response and documentation."
+        },
+        "communication": [
+            "Report to internal IR team and management."
+        ],
+        "recovery": [
+            "Restore operations safely using validated backups."
+        ],
+        "post_incident": [
+            "Conduct root cause analysis and update response plan."
+        ],
+        "frameworks": "NIST CSF, IEC 62443-2-1"
+    }
+}
